@@ -11,9 +11,9 @@ inputs:
   ws-api-key:
     description: 'WS organization api key'
     required: true
-  ws-user-key:
-    description: 'WS user key'
-    required: true
+  # ws-user-key:
+  #   description: 'WS user key'
+  #   required: true
   ws-product-key:
     description: 'WS product key to publish results to'
     required: false

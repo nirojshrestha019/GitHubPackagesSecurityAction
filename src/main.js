@@ -11,7 +11,7 @@ async function run() {
 		// Get inputs
 		const wsDestinationUrl = core.getInput('ws-destination-url');
 		const wsApiKey = core.getInput('ws-api-key');
-		const wsUserKey = core.getInput('ws-user-key');
+		// const wsUserKey = core.getInput('ws-user-key');
 		const wsProductKey = core.getInput('ws-product-key');
 		const debugMode = core.getInput('actions_step_debug');
 		const uaJarName = 'wss-unified-agent.jar';
@@ -21,9 +21,9 @@ async function run() {
 		if (wsApiKey == null || wsApiKey.trim().length < 20) {
 			core.setFailed('Invalid input: ws-api-key');
 			return;
-		} else if (wsUserKey == null || wsUserKey.trim().length < 20) {
-			core.setFailed('Invalid input: ws-user-key');
-			return;
+		// } else if (wsUserKey == null || wsUserKey.trim().length < 20) {
+		// 	core.setFailed('Invalid input: ws-user-key');
+		// 	return;
 		} else if (wsDestinationUrl == null || wsDestinationUrl.trim().length === 0 ||
 				   !wsDestinationUrl.startsWith('http') || !wsDestinationUrl.endsWith('/agent')) {
 			core.setFailed('Invalid input: ws-destination-url');
@@ -78,7 +78,7 @@ async function run() {
 					  '-generateScanReport', 'true',
 					  '-docker.scanImages', 'true',
 				      '-docker.includeSingleScan', '.*' + packageName + '.*',
-					  '-userKey', wsUserKey,
+					//   '-userKey', wsUserKey,
 					  '-project', payload.registry_package.name];
 
 		// Else - the package type is not docker - download it
@@ -96,7 +96,7 @@ async function run() {
 					  '-apiKey', wsApiKey,
 					  '-noConfig', 'true',
 					  '-generateScanReport', 'true',
-					  '-userKey', wsUserKey,
+					//   '-userKey', wsUserKey,
 					  '-project', payload.registry_package.name];
 		}
 
